@@ -1,0 +1,1686 @@
+----
+C:\Users\Diana\Quest-room-back-for-next\.env
+----
+# Environment variables declared in this file are automatically made available to Prisma.
+# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+
+# The following `prisma+postgres` URL is similar to the URL produced by running a local Prisma Postgres 
+# server with the `prisma dev` CLI command, when not choosing any non-default ports or settings. The API key, unlike the 
+# one found in a remote Prisma Postgres URL, does not contain any sensitive information.
+
+DATABASE_URL="postgresql://postgres:2506dianadukelska@db.osanmajnjeoiwagijzjo.supabase.co:5432/postgres"
+
+PORT=5000
+FRONTEND_URL=http://localhost:3000
+
+
+SENDGRID_API_KEY=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
+EMAIL_FROM=dianadukelska@gmail.com
+
+TWILIO_SID=ACbfe0ffc723f5f227194e3d1786ae9b23
+TWILIO_AUTH_TOKEN=bc394bc9b25fef3cec3324794d2c9e0b
+TWILIO_VERIFY_SID=VAe1f4a510b00b5509abdebe3a936e86c5
+
+STRIPE_SECRET_KEY=sk_test_51S4zYZPBUI4qYMxJBJWRMI9dacNptclwNSb10r9HoAbWaGWX0FAsuCW6N6Z3EPM3DpS4p0HMdTX6NlX2ikpeZz7y00B5xIOstJ
+STRIPE_WEBHOOK_SECRET=whsec_176231a1124e0a63ec1a349986b81a25ed9bf4d1ac3f927946b6aaf19cceb20f
+----
+C:\Users\Diana\Quest-room-back-for-next\.prettierrc
+----
+{
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\eslint.config.mjs
+----
+// @ts-check
+import eslint from '@eslint/js';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+  {
+    ignores: ['eslint.config.mjs'],
+  },
+  eslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
+  eslintPluginPrettierRecommended,
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.jest,
+      },
+      sourceType: 'commonjs',
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+  {
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-floating-promises': 'warn',
+      '@typescript-eslint/no-unsafe-argument': 'warn'
+    },
+  },
+);
+----
+C:\Users\Diana\Quest-room-back-for-next\nest-cli.json
+----
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "deleteOutDir": true
+  }
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\package.json
+----
+{
+  "name": "Quest-room-back",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.0",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/typeorm": "^11.0.0",
+    "@prisma/client": "^6.11.1",
+    "@sendgrid/mail": "^8.1.5",
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.1",
+    "passport-jwt": "^4.0.1",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "stripe": "^18.5.0",
+    "twilio": "^5.8.0",
+    "typeorm": "^0.3.26"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.18.0",
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@nestjs/testing": "^11.0.1",
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.10.7",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.7",
+    "@types/supertest": "^6.0.2",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "globals": "^16.0.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.4.2",
+    "prisma": "^6.11.1",
+    "source-map-support": "^0.5.21",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\prisma\migrations\20250708182959_init\migration.sql
+----
+-- CreateTable
+CREATE TABLE "User" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "name" TEXT,
+
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Post" (
+    "id" SERIAL NOT NULL,
+    "title" TEXT NOT NULL,
+    "content" TEXT,
+    "published" BOOLEAN DEFAULT false,
+    "authorId" INTEGER,
+
+    CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- AddForeignKey
+ALTER TABLE "Post" ADD CONSTRAINT "Post_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+----
+C:\Users\Diana\Quest-room-back-for-next\prisma\migrations\20250712152429_quest_model\migration.sql
+----
+-- CreateTable
+CREATE TABLE "Quest" (
+    "id" SERIAL NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "category" TEXT NOT NULL,
+    "duration" INTEGER NOT NULL,
+    "players" TEXT NOT NULL,
+    "level" TEXT NOT NULL,
+
+    CONSTRAINT "Quest_pkey" PRIMARY KEY ("id")
+);
+
+----
+C:\Users\Diana\Quest-room-back-for-next\prisma\migrations\20250716074417_add_image_to_quest\migration.sql
+----
+/*
+  Warnings:
+
+  - Added the required column `image` to the `Quest` table without a default value. This is not possible if the table is not empty.
+
+*/
+-- AlterTable
+ALTER TABLE "Quest" ADD COLUMN     "image" TEXT NOT NULL;
+
+----
+C:\Users\Diana\Quest-room-back-for-next\prisma\migrations\20250728111111_add_user_model\migration.sql
+----
+/*
+  Warnings:
+
+  - You are about to drop the `Post` table. If the table is not empty, all the data it contains will be lost.
+  - Added the required column `password` to the `User` table without a default value. This is not possible if the table is not empty.
+  - Added the required column `phone` to the `User` table without a default value. This is not possible if the table is not empty.
+  - Added the required column `surname` to the `User` table without a default value. This is not possible if the table is not empty.
+  - Made the column `name` on table `User` required. This step will fail if there are existing NULL values in that column.
+
+*/
+-- CreateEnum
+CREATE TYPE "Role" AS ENUM ('user', 'admin');
+
+-- DropForeignKey
+ALTER TABLE "Post" DROP CONSTRAINT "Post_authorId_fkey";
+
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN     "password" TEXT NOT NULL,
+ADD COLUMN     "phone" TEXT NOT NULL,
+ADD COLUMN     "role" "Role" NOT NULL DEFAULT 'user',
+ADD COLUMN     "surname" TEXT NOT NULL,
+ALTER COLUMN "name" SET NOT NULL;
+
+-- DropTable
+DROP TABLE "Post";
+
+----
+C:\Users\Diana\Quest-room-back-for-next\prisma\migrations\20250823121124_add_order_model\migration.sql
+----
+-- CreateTable
+CREATE TABLE "Order" (
+    "id" SERIAL NOT NULL,
+    "userId" INTEGER NOT NULL,
+    "questId" INTEGER NOT NULL,
+    "participants" INTEGER NOT NULL,
+    "bookingDate" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Order_pkey" PRIMARY KEY ("id")
+);
+
+-- AddForeignKey
+ALTER TABLE "Order" ADD CONSTRAINT "Order_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Order" ADD CONSTRAINT "Order_questId_fkey" FOREIGN KEY ("questId") REFERENCES "Quest"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+----
+C:\Users\Diana\Quest-room-back-for-next\prisma\migrations\20250903_fix_drift\migration.sql
+----
+-- фиксация текущего состояния базы как baseline
+-- таблица Order
+ALTER TABLE "Order" ADD COLUMN IF NOT EXISTS "name" TEXT;
+ALTER TABLE "Order" ADD COLUMN IF NOT EXISTS "phone" TEXT;
+ALTER TABLE "Order" ALTER COLUMN "createdAt" SET DEFAULT now();
+CREATE UNIQUE INDEX IF NOT EXISTS "Order_questId_bookingDate_key" ON "Order"("questId", "bookingDate");
+
+-- таблица User
+CREATE UNIQUE INDEX IF NOT EXISTS "User_phone_key" ON "User"("phone");
+
+----
+C:\Users\Diana\Quest-room-back-for-next\prisma\migrations\20250910121425_add_payment_fields\migration.sql
+----
+/*
+  Warnings:
+
+  - Made the column `name` on table `Order` required. This step will fail if there are existing NULL values in that column.
+  - Made the column `phone` on table `Order` required. This step will fail if there are existing NULL values in that column.
+
+*/
+-- AlterTable
+ALTER TABLE "Order" ADD COLUMN     "paymentStatus" TEXT NOT NULL DEFAULT 'pending',
+ADD COLUMN     "stripeSessionId" TEXT,
+ALTER COLUMN "name" SET NOT NULL,
+ALTER COLUMN "phone" SET NOT NULL;
+
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "phone" DROP NOT NULL;
+
+-- RenameIndex
+ALTER INDEX "User_phone_key" RENAME TO "user_phone_key";
+
+----
+C:\Users\Diana\Quest-room-back-for-next\prisma\migrations\20250910125342_add_amount_uah_to_quest\migration.sql
+----
+-- AlterTable
+ALTER TABLE "Quest" ADD COLUMN     "amount" INTEGER;
+
+----
+C:\Users\Diana\Quest-room-back-for-next\prisma\migrations\migration_lock.toml
+----
+# Please do not edit this file manually
+# It should be added in your version-control system (e.g., Git)
+provider = "postgresql"
+
+----
+C:\Users\Diana\Quest-room-back-for-next\prisma\schema.prisma
+----
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String
+  password String
+  phone    String?  @unique(map: "user_phone_key")
+  role     Role    @default(user)
+  surname  String
+  orders   Order[]
+}
+
+model Quest {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String
+  category    String
+  duration    Int
+  players     String
+  level       String
+  image       String
+  amount      Int?
+  orders      Order[]
+}
+
+model Order {
+  id           Int      @id @default(autoincrement())
+  userId       Int
+  questId      Int
+  participants Int
+  bookingDate  DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  name         String
+  phone        String
+  quest        Quest    @relation(fields: [questId], references: [id])
+  user         User     @relation(fields: [userId], references: [id])
+
+  paymentStatus String  @default("pending")
+  stripeSessionId String?
+
+  @@unique([questId, bookingDate])
+}
+
+enum Role {
+  user
+  admin
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\app.controller.spec.ts
+----
+import { Test, TestingModule } from '@nestjs/testing';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
+describe('AppController', () => {
+  let appController: AppController;
+
+  beforeEach(async () => {
+    const app: TestingModule = await Test.createTestingModule({
+      controllers: [AppController],
+      providers: [AppService],
+    }).compile();
+
+    appController = app.get<AppController>(AppController);
+  });
+
+  describe('root', () => {
+    it('should return "Hello World!"', () => {
+      expect(appController.getHello()).toBe('Hello World!');
+    });
+  });
+});
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\app.controller.ts
+----
+
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\app.module.ts
+----
+import { Module } from '@nestjs/common';
+import { QuestModel } from './quest/quest.module';
+import { AuthModule } from './auth/auth.module';
+import { OrderModule } from './order/order.module';
+import { OtpModule } from './otp/otp.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { StripeModule } from './stripe/stripe.module';
+
+@Module({
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
+      autoLoadEntities: true,
+      synchronize: false, 
+    }),
+
+    QuestModel, 
+    AuthModule, 
+    OrderModule, 
+    OtpModule,
+    StripeModule
+  ],
+})
+export class AppModule {}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\app.service.ts
+----
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class AppService {
+  getHello(): string {
+    return 'Hello World!';
+  }
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\auth\auth-data.service.ts
+----
+import { Injectable } from "@nestjs/common";
+import { PrismaService } from "src/prisma.service";
+import { SignUpDto } from "./dto/sign-up.dto";
+import { ISignUpRequest } from "./interfaces";
+import { UpdateUserDto } from "./dto/update-user.dto";
+
+@Injectable()
+export class AuthDataService {
+    constructor(private readonly prisma: PrismaService) {}
+
+    async createUser(data: ISignUpRequest, hashedPassword: string) {
+        return this.prisma.user.create({
+            data: {
+                email: data.email,
+                name: data.name,
+                surname: data.surname,
+                phone: data.phone,
+                password: hashedPassword,
+            },
+        });
+    }
+
+    async findUserByEmail(email: string) {
+        return this.prisma.user.findUnique({
+            where: {email},
+        });
+    }
+
+    async updateUserPassword(userId: number, hashedPassword: string) {
+        return this.prisma.user.update({
+            where: {id: userId},
+            data: {password: hashedPassword},
+        });
+    }
+
+    async findUserByPhone(phone: string) {
+      return this.prisma.user.findUnique({
+        where: {phone},
+      });
+    }
+
+    async findUserById(id: number) {
+    return this.prisma.user.findUnique({
+    where: { id },
+    select: {
+      name: true,
+      surname: true,
+      email: true,
+      phone: true,
+    },
+  });
+}
+
+async updateUser(id: number, data: UpdateUserDto) {
+  return this.prisma.user.update({
+    where: { id },
+    data,
+    select: { name: true, surname: true, email: true, phone: true },
+  });
+}
+
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\auth\auth.controller.ts
+----
+import { Body, Controller, Get, HttpCode, HttpStatus, Patch, Post, Req, Res, UseGuards } from "@nestjs/common";
+import { AuthService } from "./auth.service";
+import { SignUpDto } from "./dto/sign-up.dto";
+import { SignInDto } from "./dto/sign-in.dto";
+import { AuthGuard } from "@nestjs/passport";
+import { ISignInResponse } from "./interfaces";
+import { Response } from 'express';
+import { UpdateUserDto } from "./dto/update-user.dto";
+
+class ForgotPasswordDto {
+    email: string;
+}
+
+class ResetPasswordDto {
+    token: string;
+    newPassword: string;
+}
+
+@Controller('auth')
+export class AuthController {
+    constructor (private readonly authService: AuthService) {}
+    
+    @Post('sign-up')
+    @HttpCode(HttpStatus.CREATED)
+    async signUp(@Body() dto:SignUpDto): Promise<void> {
+        return this.authService.signUp(dto);
+   }
+
+    @Post('sign-in')
+    @HttpCode(HttpStatus.OK)
+    async signIn(@Body() dto: SignInDto): Promise<ISignInResponse> {
+        return this.authService.signIn(dto);
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Get('profile')
+    async getProfile(@Req() req) {
+    const userId = req.user.id;
+    return this.authService.getUserById(userId);
+    }
+
+
+    @Post('forgot-password')
+    @HttpCode(HttpStatus.OK)
+    async forgotPassword(@Body() dto: ForgotPasswordDto): Promise<{message: string}> {
+        await this.authService.sendPasswordResetEmail(dto.email);
+        return {message: 'Ссылка для сброса пароля отправлена на email, если он существует в системе'}; 
+    }
+
+    @Post('reset-password')
+    @HttpCode(HttpStatus.OK)
+    async resetPassword(@Body() dto: ResetPasswordDto): Promise<{message:string}> {
+        await this.authService.resetPassword(dto.token, dto.newPassword);
+        return {message: 'Пароль успешно обновлен'};
+    }
+
+    @Post('verify-reset-sms')
+    async forgotPasswordSms(@Body('phone') phone: string) {
+        return this.authService.VerifyResetSms(phone);
+    }
+
+    @Post('verify-with-sms')
+    async resetPasswordSms(
+        @Body('phone') phone: string,
+        @Body('code') code: string,
+    ) {
+        return this.authService.VerifyWithSms(phone, code);
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Patch('profile')
+    async updateProfile(@Req() req, @Body() body: UpdateUserDto) {
+    return this.authService.updateUser(req.user.id, body);
+    }
+
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\auth\auth.module.ts
+----
+import { Module } from "@nestjs/common";
+import { AuthController } from "./auth.controller";
+import { AuthService } from "./auth.service";
+import { PrismaService } from "src/prisma.service";
+import { JwtModule, JwtService } from "@nestjs/jwt";
+import { JwtStrategy } from "./jwt.strategy";
+import { AuthDataService } from "./auth-data.service";
+import { EmailModule } from "src/email/email.module";
+import { OtpModule } from "src/otp/otp.module";
+
+
+@Module({
+    imports: [EmailModule,
+        OtpModule,
+        JwtModule.register({
+            secret: 'supersecretkey',
+            signOptions: {expiresIn: '30d'},
+        }),
+    ],
+    controllers: [AuthController],
+    providers: [AuthService, AuthDataService, PrismaService, JwtStrategy],
+})
+export class AuthModule {}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\auth\auth.service.ts
+----
+import { BadRequestException, Injectable, UnauthorizedException } from "@nestjs/common";
+import * as bcrypt from 'bcryptjs'
+import { JwtService } from "@nestjs/jwt";
+import { ISignInRequest, ISignInResponse, ISignUpRequest } from "./interfaces";
+import { AuthDataService } from "./auth-data.service";
+import { EmailService } from "src/email/email.service";
+import { UpdateUserDto } from "./dto/update-user.dto";
+import { OtpService } from "src/otp/otp.service";
+
+@Injectable()
+export class AuthService {
+    constructor(
+        private readonly emailService: EmailService,
+        private readonly authDataService: AuthDataService,
+        private readonly jwtService: JwtService,
+        private readonly otpService: OtpService,
+    ) {}
+
+    async signUp(data: ISignUpRequest) {
+        const existingUser = await this.authDataService.findUserByEmail(data.email);
+        if(existingUser) {
+            throw new BadRequestException ('Пользователь с таким email уже зарегистрирован')
+        }
+
+        const hashedPassword = await bcrypt.hash(data.password, 10);
+        
+         await this.authDataService.createUser(data, hashedPassword);
+
+         await this.emailService.sendEmail(
+            data.email,
+            'Добро пожаловать!',
+            `Привет, ${data.name}! Ваш аккаунт успешно создан.`
+         );
+    } 
+
+
+    async signIn(data: ISignInRequest): Promise<ISignInResponse>{
+        const user = await this.authDataService.findUserByEmail(data.email);
+
+        if(!user || !(await bcrypt.compare(data.password, user.password))) {
+            throw new UnauthorizedException('Invalid credentials');
+        }
+
+        const payload = {id: user.id, role: user.role};
+
+        const token = await this.jwtService.signAsync(payload);
+
+        return {
+            token: token,
+            user: {
+                name: user.name
+            }
+        };
+    }
+
+    async sendPasswordResetEmail(email: string) {
+        const user = await this.authDataService.findUserByEmail(email);
+        if (!user) {
+            throw new BadRequestException ('Пользователь с таким email не найден');
+        }
+
+        const payload = {id: user.id, role: user.role};
+        const token = await this.jwtService.signAsync(payload, {
+            expiresIn: '15m',
+        });
+
+        const resetLink = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
+
+        await this.emailService.sendEmail(
+            email,
+            'Сброс пароля',
+            `Перейдите по ссылке для сброса пароля: ${resetLink}`,
+        );
+    }
+
+    async resetPassword(token: string, newPassword: string) {
+        try{
+            const decoded = await this.jwtService.verifyAsync<{sub: number}>(token);
+            const userId = decoded.sub;
+
+            const hashedPassword = await bcrypt.hash(newPassword, 10);
+            await this.authDataService.updateUserPassword(userId, hashedPassword)
+        } catch (error) {
+            throw new BadRequestException ('Неверный или просроченный токен');
+        }
+    }
+
+    async VerifyResetSms(phone: string) {
+        return this.otpService.sendOtp(phone);
+    }
+
+    async VerifyWithSms(phone: string, code: string) {
+        return this.otpService.verifyOtp(phone, code);
+    }
+
+    async getUserById(id: number) {
+    return this.authDataService.findUserById(id); 
+}
+
+    async updateUser(id: number, data: UpdateUserDto) {
+    return this.authDataService.updateUser(id, data);
+}
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\auth\dto\sign-in.dto.ts
+----
+import { IsEmail, IsString, MinLength } from 'class-validator';
+import { ISignInRequest } from '../interfaces';
+
+export class SignInDto implements ISignInRequest {
+  @IsEmail()
+  email: string;
+
+  @IsString()
+  @MinLength(6)
+  password: string;
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\auth\dto\sign-up.dto.ts
+----
+import { IsEmail, IsOptional, IsString, MinLength } from "class-validator";
+import { ISignUpRequest } from "../interfaces";
+
+
+export class SignUpDto implements ISignUpRequest {
+    @IsEmail()
+    email: string;
+
+    @IsString()
+    name: string;
+
+    @IsString()
+    surname: string;
+
+    @IsString()
+    @MinLength(6)
+    password: string;
+
+    @IsString()
+    @IsOptional()
+    phone?: string;
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\auth\dto\update-user.dto.ts
+----
+import { IsEmail, IsOptional, IsString } from "class-validator";
+
+export class UpdateUserDto {
+    @IsOptional()
+    @IsString()
+    name?: string;
+
+    @IsOptional()
+    @IsString()
+    surname?: string;
+
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\auth\interfaces.ts
+----
+export interface ISignUpRequest{
+    email: string;
+    password: string;
+    name: string;
+    surname: string;
+    phone?: string;
+}
+
+export interface ISignInRequest{
+    email: string
+    password: string
+}
+
+export interface ISignInResponse{
+    token: string;
+    user: {
+        name: string;
+    }
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\auth\jwt-auth.guard.ts
+----
+import { Injectable } from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
+
+
+@Injectable()
+export class JwtAuthGuard extends AuthGuard('jwt') {}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\auth\jwt.strategy.ts
+----
+import { Injectable } from "@nestjs/common";
+import { PassportStrategy } from "@nestjs/passport";
+import { ExtractJwt, Strategy } from 'passport-jwt';
+
+
+@Injectable()
+export class JwtStrategy extends PassportStrategy(Strategy) {
+    constructor() {
+        super({
+            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            ignoreExpiration: false,
+            secretOrKey: 'supersecretkey',
+        });
+    }
+
+        async validate(payload: any) {
+            return { id: payload.id, role: payload.role };
+  }
+
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\email\email.controller.ts
+----
+import { Body, Controller, Post } from "@nestjs/common";
+import { EmailService } from "./email.service";
+
+
+@Controller('email')
+export class EmailController {
+    constructor(private readonly emailService: EmailService) {}
+
+    @Post('send')
+    async sendEmail(@Body() body: {to: string, subject: string, text: string}) {
+        await this.emailService.sendEmail(body.to, body.subject, body.text);
+        return {status: 'Email sent successfully'};
+    }
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\email\email.module.ts
+----
+import { Module } from "@nestjs/common";
+import { EmailController } from "./email.controller";
+import { EmailService } from "./email.service";
+
+@Module({
+    imports: [],
+    controllers: [EmailController],
+    providers: [EmailService],
+    exports: [EmailService],
+})
+export class EmailModule {}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\email\email.service.ts
+----
+import { Injectable, Logger } from "@nestjs/common";
+import * as sgMail from '@sendgrid/mail'
+
+@Injectable()
+export class EmailService {
+    private readonly logger = new Logger(EmailService.name)
+
+    constructor() {
+        const apiKey = process.env.SENDGRID_API_KEY;
+        if(!apiKey) {
+            throw new Error('SENDGRID_API_KEY is not set');
+        }
+        sgMail.setApiKey(apiKey);
+    }
+
+    async sendEmail(to: string, subject: string, text: string, html?: string): Promise<void> {
+        const msg = {
+            to,
+            from: process.env.EMAIL_FROM || 'dianadukelska@gmail.com',
+            subject,
+            text,
+            html: html || `<p>${text}</p>`,
+        };
+
+        try {
+            await sgMail.send(msg);
+            this.logger.log(`Email sent to ${to}`);
+        } catch (error) {
+            this.logger.error('Error sending email', error.response?.body || error);
+            throw error;
+        }
+    }
+
+    async sendPasswordResetEmail(to: string, resetLink: string): Promise<void> {
+        const subject = 'Сброс пароля';
+        const text = `Вы запросили сброс пароля. Перейдите по ссылке ниже, чтобы установить новый пароль:\n${resetLink}`;
+        const html = `
+            <p>Вы запросили сброс пароля.</p>
+            <p>Нажмите на ссылку ниже, чтобы установить новый пароль:</p>
+            <a href="${resetLink}" target="_blank">${resetLink}</a>
+            <p>Если вы не запрашивали сброс, проигнорируйте это письмо.</p>
+        `;
+
+        return this.sendEmail(to, subject, text, html);
+    }
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\main.ts
+----
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import * as cookieParser from 'cookie-parser';
+import * as bodyParser from "body-parser";
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  app.use(cookieParser());
+
+  app.enableCors({
+    origin: 'http://localhost:3000',
+    credentials: true
+  })
+
+   app.use(bodyParser.json());
+   
+   app.use(
+    "/payment/webhook",
+    bodyParser.raw({ type: "application/json" }),
+  );
+
+  await app.listen(process.env.PORT ?? 3000);
+}
+bootstrap();
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\order\dto\create-order.dto.ts
+----
+import { IsInt, IsISO8601, IsString, Min } from "class-validator";
+
+export class CreateOrderDto {
+    @IsInt()
+    questId: number;
+
+    @IsInt()
+    @Min(2)
+    participants: number;
+
+    @IsISO8601()
+    bookingDate: string;
+
+    @IsString()
+    name: string;
+
+    @IsString()
+    phone: string;
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\order\order.controller.ts
+----
+import { Controller, Get, Post, Body, UseGuards, Req, Query, Request, Delete, Param } from '@nestjs/common';
+import { OrderService } from './order.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+
+@Controller('orders')
+export class OrderController {
+  constructor(private readonly orderService: OrderService) {}
+
+  @UseGuards(JwtAuthGuard)
+  @Post()
+  createOrder(
+    @Request() req,
+    @Body() body: {
+      questId: number;
+      participants: number;
+      bookingDate: string;
+      name: string;
+      phone: string;
+    },
+  ) {
+   const userId = req.user.id;
+
+    return this.orderService.createOrder(userId, {
+      questId: body.questId,
+      participants: body.participants,
+      bookingDate: new Date(body.bookingDate),
+      name: body.name,
+      phone: body.phone,
+    });
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('me')
+  getUserOrders(@Request() req) {
+  const userId = req.user.id;
+    return this.orderService.getUserOrders(userId);
+  }
+
+  @Get('booked')
+  getBookedSlots(@Query('questId') questId: string, @Query('date') date: string) {
+    return this.orderService.getBookedSlots(Number(questId), new Date(date));
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id')
+  deleteOrder(@Request() req, @Param('id') id: string) {
+    const userId = req.user.id;
+    return this.orderService.deleteOrder(userId, Number(id));
+  }
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\order\order.data.service.ts
+----
+import { Injectable, BadRequestException } from '@nestjs/common';
+import { Order } from '@prisma/client';
+import { PrismaService } from 'src/prisma.service';
+
+@Injectable()
+export class OrderDataService {
+  constructor(private prisma: PrismaService) {}
+
+  async createOrder(data: {
+    userId: number;
+    questId: number;
+    participants: number;
+    bookingDate: Date;
+    name: string;
+    phone: string;
+  }): Promise<Order> {
+
+    const existing = await this.prisma.order.findFirst({
+      where: {
+        questId: data.questId,
+        bookingDate: data.bookingDate,
+      },
+    });
+
+    if (existing) {
+      throw new BadRequestException('Этот слот уже занят');
+    }
+
+    return this.prisma.order.create({ data });
+  }
+
+  async getUserOrders(userId: number): Promise<Order[]> {
+    return this.prisma.order.findMany({
+      where: { userId },
+      orderBy: { bookingDate: 'asc' },
+      include: { quest: true }, 
+    });
+  }
+
+  async getBookedSlots(questId: number, date: Date): Promise<Date[]> {
+    const startOfDay = new Date(date);
+    startOfDay.setHours(0, 0, 0, 0);
+    const endOfDay = new Date(date);
+    endOfDay.setHours(23, 59, 59, 999);
+
+    const orders = await this.prisma.order.findMany({
+      where: {
+        questId,
+        bookingDate: {
+          gte: startOfDay,
+          lte: endOfDay,
+        },
+      },
+      select: { bookingDate: true },
+    });
+
+    return orders.map(o => o.bookingDate);
+  }
+
+  async deleteOrder(userId: number, orderId: number) {
+    const order = await this.prisma.order.findUnique({where: {id: orderId}});
+
+    if(!order) {
+      throw new BadRequestException('Заказ не найден');
+    }
+
+    if(order.userId !== userId) {
+      throw new BadRequestException('Вы не можете отменить чужой заказ');
+    }
+
+    return this.prisma.order.delete({
+      where: {id: orderId},
+    });
+  }
+}
+
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\order\order.module.ts
+----
+import { Module } from '@nestjs/common';
+import { OrderService } from './order.service';
+import { OrderController } from './order.controller';
+import { OrderDataService } from './order.data.service';
+import { PrismaService } from 'src/prisma.service';
+
+
+@Module({
+  controllers: [OrderController],
+  providers: [OrderService, OrderDataService, PrismaService],
+})
+export class OrderModule {}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\order\order.service.ts
+----
+import { Injectable } from '@nestjs/common';
+import { OrderDataService } from './order.data.service';
+import { Order } from '@prisma/client';
+
+@Injectable()
+export class OrderService {
+  constructor(private readonly orderDataService: OrderDataService) {}
+
+  createOrder(
+    userId: number,
+    data: {
+      questId: number;
+      participants: number;
+      bookingDate: Date;
+      name: string;
+      phone: string;
+    },
+  ): Promise<Order> {
+
+    return this.orderDataService.createOrder({ userId, ...data });
+  }
+
+  getUserOrders(userId: number): Promise<Order[]> {
+    return this.orderDataService.getUserOrders(userId);
+  }
+
+  getBookedSlots(questId: number, date: Date): Promise<Date[]> {
+    return this.orderDataService.getBookedSlots(questId, date);
+  }
+
+  deleteOrder(userId: number, orderId: number) {
+    return this.orderDataService.deleteOrder(userId, orderId);
+  }
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\otp\otp.controller.ts
+----
+import { Body, Controller, HttpCode, HttpStatus, Post } from "@nestjs/common";
+import { OtpService } from "./otp.service";
+
+
+@Controller('otp')
+export class OtpController {
+    constructor(private readonly otpService: OtpService) {}
+
+        @Post('send')
+        @HttpCode(HttpStatus.OK)
+        async sendOtp(@Body('phone') phone: string) {
+            return await this.otpService.sendOtp(phone);
+        }
+
+        @Post('verify')
+        @HttpCode(HttpStatus.OK)
+        async verifyOtp (
+            @Body('phone') phone: string,
+            @Body('code') code: string,
+        ) {
+            return await this.otpService.verifyOtp(phone, code);
+        }
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\otp\otp.module.ts
+----
+import { Module } from "@nestjs/common";
+import { OtpService } from "./otp.service";
+import { OtpController } from "./otp.controller";
+import { PrismaService } from "src/prisma.service";
+import { JwtModule } from "@nestjs/jwt";
+
+@Module({
+    imports: [
+        JwtModule.register({
+            secret: 'supersecretkey',
+            signOptions: { expiresIn: '30d' },
+        }),
+    ],
+    providers: [OtpService, PrismaService],
+    controllers: [OtpController],
+    exports: [OtpService]
+})
+
+export class OtpModule {}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\otp\otp.service.ts
+----
+import { Injectable } from "@nestjs/common";
+import * as Twilio  from "twilio";
+import * as bcrypt from 'bcryptjs';
+import { PrismaService } from "src/prisma.service";
+import * as jwt from "jsonwebtoken";
+import { JwtService } from "@nestjs/jwt";
+
+interface OtpEntry {
+    code: string;
+    expiresAt: Date;
+}
+
+@Injectable()
+export class OtpService {
+    private otpStore: Map<string, OtpEntry> = new Map();
+    private twilioClient = Twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
+
+    constructor(
+        private readonly prisma: PrismaService,
+        private readonly jwtService: JwtService,
+    ) {}
+
+    async sendOtp(phone: string) {
+        if (!phone) {
+        throw new Error('Номер телефона не передан');
+        }
+
+        const user = await this.prisma.user.findUnique({where: {phone}});
+        if(!user) throw new Error('Пользователь не найден');
+
+        const verification = await this.twilioClient.verify.v2
+        .services(process.env.TWILIO_VERIFY_SID!)
+        .verifications.create({ to: phone, channel: "sms" });
+
+    return {
+      message: `Код отправлен на ${phone}`,
+      status: verification.status,
+    }
+}
+
+    async verifyOtp(phone: string, code: string) {
+      if (!phone || !code) {
+        throw new Error("Телефон и код обязательны");
+      }
+
+      const check = await this.twilioClient.verify.v2
+      .services(process.env.TWILIO_VERIFY_SID!)
+      .verificationChecks.create({ to: phone, code });
+
+      if (check.status !== "approved") {
+        throw new Error("Неверный или просроченный код");
+      }
+
+      const user = await this.prisma.user.findUnique({ where: { phone } });
+      if (!user) throw new Error("Пользователь не найден");
+
+      
+      const token = this.jwtService.sign(
+        {id: user.id, role: user.role},
+        {expiresIn: "1d"}
+      );
+
+      return { message: "Авторизация успешна", token, user: {id: user.id, name: user.name, surname: user.surname, email: user.email, role: user.role,}};
+    }
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\prisma.service.ts
+----
+
+import { Injectable, OnModuleInit } from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
+
+@Injectable()
+export class PrismaService extends PrismaClient implements OnModuleInit {
+  async onModuleInit() {
+    await this.$connect();
+  }
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\quest\quest.controller.ts
+----
+import {
+  Controller,
+  Get,
+  Post,
+  Patch,
+  Delete,
+  Param,
+  Body,
+  ParseIntPipe,
+  Query,
+} from '@nestjs/common';
+import { QuestService } from './quest.service';
+import { Quest, Quest as QuestModel } from '@prisma/client';
+
+@Controller('quests')
+export class QuestController {
+  constructor(
+    private readonly questService: QuestService,
+  ) {}
+
+  @Post()
+  async createQuest(@Body() data: Omit<Quest, 'id'>): Promise<Quest> {
+    return this.questService.createQuest(data);
+  } 
+
+  @Get()
+  async getAllQuests(@Query('search') search?: string): Promise<Quest[]> {
+    return this.questService.getAllQuests(search);
+  }
+
+  @Get(':id')
+  async getQuestById(@Param('id', ParseIntPipe) id: number): Promise<Quest | null> {
+    return this.questService.getQuestById(id);
+  }
+
+  @Patch(':id')
+  async updateQuest(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() data: Partial<Omit<Quest, 'id'>>,
+  ): Promise<Quest> {
+    return this.questService.updateQuest(id, data);
+  }
+
+@Delete(':id')
+async deletePost(@Param('id', ParseIntPipe) id: number): Promise<{ message: string }> {
+  return this.questService.deleteQuest(id);
+}
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\quest\quest.data.service.ts
+----
+// src/data.service.ts
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma.service';
+import { Quest, Prisma } from '@prisma/client';
+
+@Injectable()
+export class QuestDataService {
+  constructor(private prisma: PrismaService) {}
+
+  async create(data: Prisma.QuestCreateInput): Promise<Quest> {
+    return this.prisma.quest.create({ data });
+  }
+
+  async getAll(search?: string): Promise<Quest[]> {
+  if (!search) {
+    return this.prisma.quest.findMany();
+  }
+
+  const isNumeric = !isNaN(Number(search));
+  const numericValue = Number(search);
+
+  const orConditions: any[] = [];
+
+  if (isNumeric) {
+    orConditions.push({ duration: numericValue });
+  }
+
+  orConditions.push(
+    { title: { contains: search, mode: 'insensitive' } },
+    { category: { contains: search, mode: 'insensitive' } },
+    { players: { contains: search, mode: 'insensitive' } },
+    { level: { contains: search, mode: 'insensitive' } }
+  );
+
+  return this.prisma.quest.findMany({
+    where: {
+      OR: orConditions,
+    },
+  });
+}
+
+  async getById(id: number): Promise<Quest | null> {
+    return this.prisma.quest.findUnique({
+      where: { id },
+    });
+  }
+
+  async update(
+    id: number,
+    data: Prisma.QuestUpdateInput,
+  ): Promise<Quest> {
+    return this.prisma.quest.update({
+      where: { id },
+      data,
+    });
+  }
+
+  async delete(id: number): Promise<void> {
+    await this.prisma.quest.delete({
+      where: { id },
+    });
+  }
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\quest\quest.module.ts
+----
+import { Module } from "@nestjs/common";
+import { QuestService } from "./quest.service";
+import { QuestController } from "./quest.controller";
+import { PrismaService } from "src/prisma.service";
+import { QuestDataService } from "./quest.data.service";
+
+@Module({
+    controllers: [QuestController],
+    providers: [QuestService, PrismaService, QuestDataService],
+})
+
+export class QuestModel {}
+----
+C:\Users\Diana\Quest-room-back-for-next\src\quest\quest.service.ts
+----
+
+import { Injectable } from '@nestjs/common';
+import { Quest, Prisma } from '@prisma/client';
+import { QuestDataService } from './quest.data.service';
+
+@Injectable()
+export class QuestService {
+  constructor(private QuestdataService: QuestDataService) {}
+
+   async createQuest(data: Prisma.QuestCreateInput): Promise<Quest> {
+    return this.QuestdataService.create(data);
+  }
+
+  async getAllQuests(search?: string): Promise<Quest[]> {
+    return this.QuestdataService.getAll(search);
+  }
+
+  async getQuestById(id: number): Promise<Quest | null> {
+    return this.QuestdataService.getById(id);
+  }
+
+  async updateQuest(
+    id: number, 
+    data: Prisma.QuestUpdateInput,
+  ): Promise<Quest> {
+    return this.QuestdataService.update(id, data);
+  }
+
+  async deleteQuest(id: number): Promise<{ message: string }> {
+  await this.QuestdataService.delete(id);
+  return { message: `Квест успешно удалён` };
+}
+}
+
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\stripe\stripe.controller.ts
+----
+import {
+  Controller,
+  Post,
+  Body,
+  Headers,
+  Req,
+  HttpCode,
+} from "@nestjs/common";
+import { StripeService } from "./stripe.service";
+import { PrismaService } from "src/prisma.service";
+import { Request } from "express";
+import Stripe from "stripe";
+
+@Controller("payment")
+export class StripeController {
+  constructor(
+    private readonly stripeService: StripeService,
+    private readonly prisma: PrismaService,
+  ) {}
+
+  @Post("create-checkout-session")
+async createCheckoutSession(@Body() body: { orderId: number }) {
+  const order = await this.prisma.order.findUnique({
+    where: { id: body.orderId },
+    include: { quest: true },
+  });
+
+  if (!order) {
+    throw new Error("Заказ не найден");
+  }
+
+  const amountUah = order.quest.amount ?? 0;
+  const session = await this.stripeService.createCheckoutSession(
+    amountUah,
+    order.id.toString(),
+  );
+
+  await this.prisma.order.update({
+    where: { id: order.id },
+    data: { stripeSessionId: session.id },
+  });
+
+  return { sessionId: session.id };
+}
+
+  @Post("webhook")
+  @HttpCode(200)
+  async handleWebhook(
+    @Req() req: Request,
+    @Headers("stripe-signature") sig: string,
+  ) {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+    let event: Stripe.Event;
+
+    try {
+      event = stripe.webhooks.constructEvent(
+        req.body,
+        sig,
+        process.env.STRIPE_WEBHOOK_SECRET!,
+      );
+    } catch (err) {
+      console.error("❌ Webhook signature verification failed.", err.message);
+      throw err;
+    }
+
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object as Stripe.Checkout.Session;
+      const orderId = session.metadata?.orderId;
+
+      if (orderId) {
+        await this.prisma.order.update({
+          where: { id: Number(orderId) },
+          data: { paymentStatus: "paid" },
+        });
+      }
+    }
+
+    return { received: true };
+  }
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\stripe\stripe.module.ts
+----
+import { Module } from "@nestjs/common";
+import { StripeService } from "./stripe.service";
+import { StripeController } from "./stripe.controller";
+import { PrismaService } from "src/prisma.service";
+
+@Module({
+  controllers: [StripeController],
+  providers: [StripeService, PrismaService],
+})
+export class StripeModule {}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\src\stripe\stripe.service.ts
+----
+import { Injectable } from "@nestjs/common";
+import Stripe from "stripe";
+
+@Injectable()
+export class StripeService {
+    private stripe: Stripe;
+
+    constructor() {
+        this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+    }
+
+    async createCheckoutSession(amount: number, orderId: string) {
+        const session = await this.stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: [
+                {
+                    price_data: {
+                        currency: 'uah',
+                        product_data: {name: `Order #${orderId}`},
+                        unit_amount: amount * 100, 
+                    },
+                    quantity: 1,
+                },
+            ],
+            mode: 'payment',
+            success_url: `${process.env.FRONTEND_URL}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${process.env.FRONTEND_URL}/payment-cancel`,
+            metadata: {orderId},
+        });
+
+        return {id: session.id};
+    }
+}
+----
+C:\Users\Diana\Quest-room-back-for-next\test\app.e2e-spec.ts
+----
+import { Test, TestingModule } from '@nestjs/testing';
+import { INestApplication } from '@nestjs/common';
+import * as request from 'supertest';
+import { App } from 'supertest/types';
+import { AppModule } from './../src/app.module';
+
+describe('AppController (e2e)', () => {
+  let app: INestApplication<App>;
+
+  beforeEach(async () => {
+    const moduleFixture: TestingModule = await Test.createTestingModule({
+      imports: [AppModule],
+    }).compile();
+
+    app = moduleFixture.createNestApplication();
+    await app.init();
+  });
+
+  it('/ (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/')
+      .expect(200)
+      .expect('Hello World!');
+  });
+});
+
+----
+C:\Users\Diana\Quest-room-back-for-next\test\jest-e2e.json
+----
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  }
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\tsconfig.build.json
+----
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+}
+
+----
+C:\Users\Diana\Quest-room-back-for-next\tsconfig.json
+----
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false
+  }
+}
+

@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String
+  password String
+  phone    String?  @unique(map: "user_phone_key")
+  role     Role    @default(user)
+  surname  String
+  orders   Order[]
+}
+
+model Quest {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String
+  category    String
+  duration    Int
+  players     String
+  level       String
+  image       String
+  amount      Int?
+  orders      Order[]
+}
+
+model Order {
+  id           Int      @id @default(autoincrement())
+  userId       Int
+  questId      Int
+  participants Int
+  bookingDate  DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  name         String
+  phone        String
+  quest        Quest    @relation(fields: [questId], references: [id])
+  user         User     @relation(fields: [userId], references: [id])
+
+  paymentStatus String  @default("pending")
+  stripeSessionId String?
+
+  @@unique([questId, bookingDate])
+}
+
+enum Role {
+  user
+  admin
+}
