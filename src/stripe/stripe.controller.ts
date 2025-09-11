@@ -66,20 +66,8 @@ async createCheckoutSession(@Body() body: { orderId: number }) {
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object as Stripe.Checkout.Session;
-      console.log("💳 Checkout session completed:", session.id);
-      console.log("Metadata:", session.metadata);
 
       try {
-        if (session.metadata?.orderId) {
-          await this.prisma.order.update({
-            where: { id: Number(session.metadata.orderId) },
-            data: {
-              paymentStatus: "paid",
-              stripeSessionId: session.id,
-            },
-          });
-          console.log(`✅ Order #${session.metadata.orderId} обновлён → paid`);
-        } else {
           const updated = await this.prisma.order.updateMany({
             where: { stripeSessionId: session.id },
             data: { paymentStatus: "paid" },
@@ -87,7 +75,6 @@ async createCheckoutSession(@Body() body: { orderId: number }) {
           console.log(
             `✅ Order обновлён по sessionId=${session.id}, count=${updated.count}`,
           );
-        }
       } catch (error) {
         console.error("❌ Ошибка при обновлении заказа:", error);
       }

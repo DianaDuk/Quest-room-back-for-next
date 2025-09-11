@@ -8,7 +8,7 @@ export class OrderController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  createOrder(
+  async createOrder(
     @Request() req,
     @Body() body: {
       questId: number;
@@ -20,7 +20,7 @@ export class OrderController {
   ) {
    const userId = req.user.id;
 
-    return this.orderService.createOrder(userId, {
+    return await this.orderService.createOrder(userId, {
       questId: body.questId,
       participants: body.participants,
       bookingDate: new Date(body.bookingDate),
